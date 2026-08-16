@@ -1,6 +1,6 @@
 # My Portfolio
 
-**Hello I'm Anirudh**, a student currently studying *Maths*, *Further Maths*, *Physics* and *Product Design* at A-Level.
+**Hello I'm Anirudh**.
 
 This website will serve as a portfolio / digital resume where I showcase some of my work.
 
