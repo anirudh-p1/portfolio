@@ -87,7 +87,7 @@
       bottom: 0; left: 0; right: 0;
       background: #161b22;
       border-top: 1px solid #30363d;
-      padding: 10px 20px;
+      padding: 14px 20px;
       text-align: center;
       z-index: 50;
     }
@@ -225,6 +225,13 @@
 
   <div id="app">Loading...</div>
 
+  <!-- Fixed Portfolio Social Footer (CHANGE URLS BELOW) -->
+  <div class="portfolio-footer">
+    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:your.email@example.com">Email</a>
+    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
   <!-- Docsify Core Framework Engine -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 
@@ -246,8 +253,8 @@
       { title: "Mock Modular Attention", blurb: "Ramanujan Q-Series and Mock Theta Kernels for symmetry-constrained sequential learning.", image: "", path: "My Projects/Mock_Modular_Attention/README" },
       { title: "FreshSight-AI", blurb: "A CNN monitoring produce freshness in real time at retail.", image: "", path: "My Projects/FreshSight-AI/README" },
       { title: "Anti-MABL", blurb: "ML-powered resistance control for microgravity training machines.", image: "", path: "My Projects/Anti-MABL/README" },
-      { title: "Jamming-Detection", blurb: "RF jamming detection via complex-valued spectrogram autoencoding.", image: "", path: "My Projects/Jamming-Detection/README" },
-      { title: "HRV for Recovery/Fatigue Prediction", blurb: "Predicting fatigue/recovery from HRV like Whoop.", image: "", path: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
+      { title: "Jamming-Detection", blurb: "WIP — RF jamming detection via complex-valued spectrogram autoencoding.", image: "", path: "My Projects/Jamming-Detection/README" },
+      { title: "HRV for Recovery/Fatigue Prediction", blurb: "WIP — predicting fatigue/recovery from HRV.", image: "", path: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
     ];
 
     // Carousel script block
@@ -294,11 +301,3 @@
 
       var checkExist = setInterval(function() {
          if (document.getElementById('project-carousel')) {
-            renderCarousel();
-            clearInterval(checkExist);
-         }
-      }, 100);
-    })();
-  </script>
-</body>
-</html>
