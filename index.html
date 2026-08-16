@@ -87,7 +87,7 @@
       bottom: 0; left: 0; right: 0;
       background: #161b22;
       border-top: 1px solid #30363d;
-      padding: 14px 20px;
+      padding: 10px 20px;
       text-align: center;
       z-index: 50;
     }
@@ -225,13 +225,6 @@
 
   <div id="app">Loading...</div>
 
-  <!-- Fixed Portfolio Social Footer (CHANGE URLS BELOW) -->
-  <div class="portfolio-footer">
-    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="mailto:your.email@example.com">Email</a>
-    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-  </div>
-
   <!-- Docsify Core Framework Engine -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 
@@ -301,3 +294,11 @@
 
       var checkExist = setInterval(function() {
          if (document.getElementById('project-carousel')) {
+            renderCarousel();
+            clearInterval(checkExist);
+         }
+      }, 100);
+    })();
+  </script>
+</body>
+</html>
