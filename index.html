@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anirudh P | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
+  <style>
+    /* ===== 1. Dark Grey Background ===== */
+    body, #app, .content, section.content {
+      background-color: #1a1a1a !important;
+    }
+
+    /* ===== No sidebar ===== */
+    .sidebar, .sidebar-toggle { display: none !important; }
+    .content { margin-left: 0 !important; }
+
+    /* ===== 2. Custom Table Styles ===== */
+    kbd, table, td, th {
+      border: 1px solid #30363d !important;
+      background-color: #262626 !important;
+    }
+    th { background-color: #333333 !important; }
+
+    /* ===== 3. Link Colours ===== */
+    a { color: #58a6ff !important; }
+
+    /* ===== 4. Regular Text: Light Grey ===== */
+    .markdown-section,
+    .markdown-section p,
+    .markdown-section li {
+      color: #dcdcdc !important;
+    }
+    .markdown-section {
+      padding-top: 90px;   /* room for sticky name header */
+      padding-bottom: 70px; /* room for fixed footer bar */
+      max-width: 760px;
+    }
+
+    /* ===== 5. Headings / Bold / Italic: White ===== */
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3,
+    .markdown-section h4,
+    .markdown-section h5,
+    .markdown-section h6,
+    .markdown-section strong,
+    .markdown-section em {
+      color: #ffffff !important;
+    }
+
+    /* ===== Sticky name header (click to go home) ===== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 60;
+      background: #1a1a1a;
+      border-bottom: 1px solid #30363d;
+      padding: 16px 20px;
+      text-align: center;
+    }
+    .site-header a {
+      color: #ffffff !important;
+      font-weight: bold;
+      font-size: 1.7rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .site-header a:hover { color: #58a6ff !important; }
+
+    /* ===== Fixed footer (LinkedIn / Email / GitHub) ===== */
+    .portfolio-footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #161b22;
+      border-top: 1px solid #30363d;
+      padding: 10px 20px;
+      text-align: center;
+      z-index: 50;
+    }
+    .portfolio-footer a {
+      color: #58a6ff !important;
+      text-decoration: underline;
+      font-weight: 500;
+      margin: 0 15px;
+    }
+
+    /* ===== Carousel (bigger this time) ===== */
+    .pc-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 30px 0 15px;
+    }
+    .pc-arrow {
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #58a6ff;
+      font-size: 2.1rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .pc-arrow:hover { border-color: #58a6ff; }
+    .pc-card {
+      width: 460px;
+      max-width: 82vw;
+      height: 300px;
+      background-color: #161b22;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      transition: border-color 0.15s;
+    }
+    .pc-card:hover { border-color: #58a6ff; }
+    .pc-card .pc-card-label {
+      width: 100%;
+      padding: 16px 18px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.82));
+      color: #ffffff !important;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .pc-card .pc-card-label small {
+      display: block;
+      font-weight: normal;
+      color: #dcdcdc;
+      margin-top: 4px;
+      font-size: 0.85rem;
+    }
+    .pc-dots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .pc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #30363d;
+      cursor: pointer;
+    }
+    .pc-dot.active { background: #58a6ff; }
+
+    /* ===== Detail page: description -> big centered media -> more detail ===== */
+    .detail-desc {
+      font-size: 1.05rem;
+      margin-top: -4px;
+    }
+    .detail-media {
+      margin: 24px 0;
+      text-align: center;
+    }
+    .detail-media img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      border: 1px solid #30363d;
+    }
+    .wip-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #1a1a1a !important;
+      background: #58a6ff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .project-links a {
+      display: inline-block;
+      margin: 4px 8px 4px 0;
+      padding: 8px 14px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #58a6ff !important;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .project-links a:hover { border-color: #58a6ff; }
+  </style>
+</head>
+<body>
+  <div id="app">Loading...</div>
+
+  <script>
+    window.$docsify = {
+      name: 'Anirudh P | Portfolio',
+      homepage: 'README.md',
+      themeColor: '#58a6ff',
+      relativePath: true,
+      basePath: './',
+      loadSidebar: false
+    };
+
+    // ============================================================
+    // CHANGE ME: this is the single place to add / edit / remove
+    // cards in the homepage carousel — About Me, Non-Trivial,
+    // Writings, and every project all live in this one list, in
+    // the order they should appear.
+    //   - image: leave "" for a plain dark card, or paste an image URL
+    //   - path:  folder path (no leading slash) to that page's README
+    // ============================================================
+    window.PORTFOLIO_ITEMS = [
+      { title: "About Me", blurb: "A bit about who I am.", image: "", path: "About Me/README" },
+      { title: "Non-Trivial Fellowship", blurb: "9-week research fellowship.", image: "", path: "Non-Trivial/README" },
+      { title: "Writings", blurb: "Essays, pre-prints & articles.", image: "", path: "Writings/README" },
+      { title: "PiNNs for Metabolic Thresholds", blurb: "Physics-Informed Neural Networks to predict metabolic thresholds.", image: "", path: "My Projects/PiNNs_for_Metabolic_Thresholds/README" },
+      { title: "Mock Modular Attention", blurb: "Ramanujan Q-Series and Mock Theta Kernels for symmetry-constrained sequential learning.", image: "", path: "My Projects/Mock_Modular_Attention/README" },
+      { title: "FreshSight-AI", blurb: "A CNN monitoring produce freshness in real time at retail.", image: "", path: "My Projects/FreshSight-AI/README" },
+      { title: "Anti-MABL", blurb: "ML-powered resistance control for microgravity training machines.", image: "", path: "My Projects/Anti-MABL/README" },
+      { title: "Jamming-Detection", blurb: "WIP — RF jamming detection via complex-valued spectrogram autoencoding.", image: "", path: "My Projects/Jamming-Detection/README" },
+      { title: "HRV for Recovery/Fatigue Prediction", blurb: "WIP — predicting fatigue/recovery from HRV.", image: "", path: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
+    ];
+
+    (function () {
+      var pcIndex = 0;
+
+      function renderCarousel() {
+        var mount = document.getElementById('project-carousel');
+        if (!mount) return;
+        var items = window.PORTFOLIO_ITEMS || [];
+        if (!items.length) { mount.innerHTML = '<p>Nothing here yet — add items in index.html.</p>'; return; }
+        if (pcIndex >= items.length) pcIndex = 0;
+        if (pcIndex < 0) pcIndex = items.length - 1;
+        var p = items[pcIndex];
+        var bg = p.image ? 'background-image:url(' + p.image + ');' : '';
+
+        var dots = items.map(function (_, i) {
+          return '<span class="pc-dot' + (i === pcIndex ? ' active' : '') + '" data-i="' + i + '"></span>';
+        }).join('');
+
+        mount.innerHTML =
+          '<div class="pc-wrap">' +
+            '<button class="pc-arrow" id="pc-prev" aria-label="Previous">&#8249;</button>' +
+            '<div class="pc-card" id="pc-card" style="' + bg + '">' +
+              '<div class="pc-card-label">' + p.title + '<small>' + p.blurb + '</small></div>' +
+            '</div>' +
+            '<button class="pc-arrow" id="pc-next" aria-label="Next">&#8250;</button>' +
+          '</div>' +
+          '<div class="pc-dots">' + dots + '</div>';
+
+        document.getElementById('pc-prev').onclick = function () { pcIndex--; renderCarousel(); };
+        document.getElementById('pc-next').onclick = function () { pcIndex++; renderCarousel(); };
+        document.getElementById('pc-card').onclick = function () {
+          location.hash = '#/' + encodeURI(p.path);
+        };
+        Array.prototype.forEach.call(mount.querySelectorAll('.pc-dot'), function (dot) {
+          dot.onclick = function () { pcIndex = parseInt(dot.getAttribute('data-i'), 10); renderCarousel(); };
+        });
+      }
+
+      window.$docsify.plugins = (window.$docsify.plugins || []).concat(function (hook) {
+        hook.doneEach(function () {
+          renderCarousel();
+
+          if (!document.querySelector('.site-header')) {
+            var header = document.createElement('div');
+            header.className = 'site-header';
+            header.innerHTML = '<a href="#/">Anirudh Prabhu</a>';
+            document.body.appendChild(header);
+          }
+
+          if (!document.querySelector('.portfolio-footer')) {
+            var footer = document.createElement('div');
+            footer.className = 'portfolio-footer';
+            footer.innerHTML =
+              '<a href="https://www.linkedin.com/in/anirudh-p-6570883a9" target="_blank">LinkedIn</a>' +
+              '<a href="mailto:anirudhprabhu6@gmail.com">Email</a>' +
+              '<a href="https://github.com/anirudh-p1" target="_blank">GitHub</a>';
+            document.body.appendChild(footer);
+          }
+        });
+      });
+    })();
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</body>
+</html>
