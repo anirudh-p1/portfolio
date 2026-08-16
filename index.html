@@ -5,10 +5,13 @@
   <title>Anirudh P | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
-  <style>
+   <style>
+    /* 1. True Dark Background */
     body, .content, section.content {
-      background-color: #0d1117 !important; /* GitHub True Dark Background */
+      background-color: #0d1117 !important; 
     }
+    
+    /* 2. Custom Table Styles */
     kbd, table, td, th {
       border: 1px solid #30363d !important;
       background-color: #161b22 !important; 
@@ -16,8 +19,19 @@
     th {
       background-color: #21262d !important;
     }
+    
+    /* 3. Link Colours */
     a {
       color: #58a6ff !important; 
+    }
+
+    /* 4. FIX: Set all normal text, bold (**), and italics (*) to uniform white */
+    .markdown-section, 
+    .markdown-section p, 
+    .markdown-section li,
+    .markdown-section strong, 
+    .markdown-section em {
+      color: #ffffff !important;
     }
   </style>
 </head>
