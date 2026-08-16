@@ -35,6 +35,7 @@
       padding-top: 90px;   /* room for sticky name header */
       padding-bottom: 70px; /* room for fixed footer bar */
       max-width: 760px;
+      margin: 0 auto !important; /* Centers the main layout container */
     }
 
     /* ===== 5. Headings / Bold / Italic: White ===== */
@@ -85,13 +86,14 @@
       margin: 0 15px;
     }
 
-    /* ===== Carousel (bigger this time) ===== */
+    /* ===== Carousel (Centered & Balanced) ===== */
     .pc-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 18px;
-      margin: 30px 0 15px;
+      margin: 30px auto 15px; /* Centered horizontally */
+      width: 100%;            /* Spans full content width */
     }
     .pc-arrow {
       background: #161b22;
@@ -154,7 +156,7 @@
     }
     .pc-dot.active { background: #58a6ff; }
 
-    /* ===== Detail page: description -> big centered media -> more detail ===== */
+    /* ===== Detail page ===== */
     .detail-desc {
       font-size: 1.05rem;
       margin-top: -4px;
@@ -197,6 +199,9 @@
 <body>
   <div id="app">Loading...</div>
 
+  <!-- Docsify Core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
   <script>
     window.$docsify = {
       name: 'Anirudh P | Portfolio',
@@ -207,14 +212,6 @@
       loadSidebar: false
     };
 
-    // ============================================================
-    // CHANGE ME: this is the single place to add / edit / remove
-    // cards in the homepage carousel — About Me, Non-Trivial,
-    // Writings, and every project all live in this one list, in
-    // the order they should appear.
-    //   - image: leave "" for a plain dark card, or paste an image URL
-    //   - path:  folder path (no leading slash) to that page's README
-    // ============================================================
     window.PORTFOLIO_ITEMS = [
       { title: "About Me", blurb: "A bit about who I am.", image: "", path: "About Me/README" },
       { title: "Non-Trivial Fellowship", blurb: "9-week research fellowship.", image: "", path: "Non-Trivial/README" },
@@ -224,9 +221,10 @@
       { title: "FreshSight-AI", blurb: "A CNN monitoring produce freshness in real time at retail.", image: "", path: "My Projects/FreshSight-AI/README" },
       { title: "Anti-MABL", blurb: "ML-powered resistance control for microgravity training machines.", image: "", path: "My Projects/Anti-MABL/README" },
       { title: "Jamming-Detection", blurb: "WIP — RF jamming detection via complex-valued spectrogram autoencoding.", image: "", path: "My Projects/Jamming-Detection/README" },
-      { title: "HRV for Recovery/Fatigue Prediction", blurb: "WIP — predicting fatigue/recovery from HRV.", image: "", path: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
+      { title: "HRV for Recovery/Fatigue Prediction", blurb: "WIP — predicting fatigue/recovery from HRV.", image: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
     ];
 
+    // Self-contained carousel builder
     (function () {
       var pcIndex = 0;
 
@@ -234,7 +232,8 @@
         var mount = document.getElementById('project-carousel');
         if (!mount) return;
         var items = window.PORTFOLIO_ITEMS || [];
-        if (!items.length) { mount.innerHTML = '<p>Nothing here yet — add items in index.html.</p>'; return; }
+        if (!items.length) { mount.innerHTML = '<p>Nothing here yet.</p>'; return; }
+        
         if (pcIndex >= items.length) pcIndex = 0;
         if (pcIndex < 0) pcIndex = items.length - 1;
         var p = items[pcIndex];
@@ -246,48 +245,35 @@
 
         mount.innerHTML =
           '<div class="pc-wrap">' +
-            '<button class="pc-arrow" id="pc-prev" aria-label="Previous">&#8249;</button>' +
-            '<div class="pc-card" id="pc-card" style="' + bg + '">' +
+            '<button class="pc-arrow" id="pc-prev" aria-label="Previous">‹</button>' +
+            '<div class="pc-card" id="pc-card-click" style="' + bg + '">' +
               '<div class="pc-card-label">' + p.title + '<small>' + p.blurb + '</small></div>' +
             '</div>' +
-            '<button class="pc-arrow" id="pc-next" aria-label="Next">&#8250;</button>' +
+            '<button class="pc-arrow" id="pc-next" aria-label="Next">›</button>' +
           '</div>' +
           '<div class="pc-dots">' + dots + '</div>';
 
-        document.getElementById('pc-prev').onclick = function () { pcIndex--; renderCarousel(); };
-        document.getElementById('pc-next').onclick = function () { pcIndex++; renderCarousel(); };
-        document.getElementById('pc-card').onclick = function () {
-          location.hash = '#/' + encodeURI(p.path);
-        };
-        Array.prototype.forEach.call(mount.querySelectorAll('.pc-dot'), function (dot) {
-          dot.onclick = function () { pcIndex = parseInt(dot.getAttribute('data-i'), 10); renderCarousel(); };
-        });
+        document.getElementById('pc-prev').onclick = function() { pcIndex--; renderCarousel(); };
+        document.getElementById('pc-next').onclick = function() { pcIndex++; renderCarousel(); };
+        document.getElementById('pc-card-click').onclick = function() { window.location.hash = '#' + p.path; };
+        
+        var dotSpans = mount.querySelectorAll('.pc-dot');
+        for (var i = 0; i < dotSpans.length; i++) {
+          dotSpans[i].onclick = function(e) {
+            pcIndex = parseInt(e.target.getAttribute('data-i'));
+            renderCarousel();
+          };
+        }
       }
 
-      window.$docsify.plugins = (window.$docsify.plugins || []).concat(function (hook) {
-        hook.doneEach(function () {
-          renderCarousel();
-
-          if (!document.querySelector('.site-header')) {
-            var header = document.createElement('div');
-            header.className = 'site-header';
-            header.innerHTML = '<a href="#/">Anirudh Prabhu</a>';
-            document.body.appendChild(header);
-          }
-
-          if (!document.querySelector('.portfolio-footer')) {
-            var footer = document.createElement('div');
-            footer.className = 'portfolio-footer';
-            footer.innerHTML =
-              '<a href="https://www.linkedin.com/in/anirudh-p-6570883a9" target="_blank">LinkedIn</a>' +
-              '<a href="mailto:anirudhprabhu6@gmail.com">Email</a>' +
-              '<a href="https://github.com/anirudh-p1" target="_blank">GitHub</a>';
-            document.body.appendChild(footer);
-          }
-        });
-      });
+      // Check for mount target periodically until Docsify renders the markdown page template
+      var checkExist = setInterval(function() {
+         if (document.getElementById('project-carousel')) {
+            renderCarousel();
+            clearInterval(checkExist);
+         }
+      }, 100);
     })();
   </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
 </html>
