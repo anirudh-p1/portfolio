@@ -7,13 +7,11 @@ This website will serve as a portfolio / digital resume where I showcase some of
 Explore:
 
 <div style="display: flex; gap: 15px; margin-bottom: 20px;">
-  <a href="/#/About%20Me/README/" style="flex: 1; text-align: center; background: #161b22; border: 1px solid #30363d; padding: 12px; border-radius: 6px; color: #58a6ff !important; font-weight: bold; text-decoration: none;">About Me</a>
-  <a href="/#/My%20Projects/README/" style="flex: 1; text-align: center; background: #161b22; border: 1px solid #30363d; padding: 12px; border-radius: 6px; color: #58a6ff !important; font-weight: bold; text-decoration: none;">My Projects</a>
+  <a href="/About%20Me/README/" style="flex: 1; text-align: center; background: #161b22; border: 1px solid #30363d; padding: 12px; border-radius: 6px; color: #58a6ff !important; font-weight: bold; text-decoration: none;">About Me</a>
+  <a href="/My%20Projects/README/" style="flex: 1; text-align: center; background: #161b22; border: 1px solid #30363d; padding: 12px; border-radius: 6px; color: #58a6ff !important; font-weight: bold; text-decoration: none;">My Projects</a>
 </div>
 
 <hr style="border-color: #30363d; margin: 25px 0;">
-
-
 ---
 
 <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
