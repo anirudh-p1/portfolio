@@ -17,7 +17,7 @@ Explore:
   <p>
     <a href="https://www.linkedin.com/in/anirudh-p-6570883a9" target="_blank" style="color: #58a6ff !important; text-decoration: underline; font-weight: 500; margin: 0 15px;">LinkedIn</a> • 
     <a href="mailto:anirudhprabhu6@gmail.com" style="color: #58a6ff !important; text-decoration: underline; font-weight: 500; margin: 0 15px;">Email</a> •
-    <a href="github.com/anirudh-p1" target="_blank" style="color: #58a6ff !important; text-decoration: underline; font-weight: 500; margin: 0 15px;">GitHub</a>
+    <a href="https://github.com/anirudh-p1" target="_blank" style="color: #58a6ff !important; text-decoration: underline; font-weight: 500; margin: 0 15px;">GitHub</a>
   </p>
   <!-- This hidden form forces the browser to send a strict, explicit subject field -->
   <form action="mailto:anirudhprabhu6@gmail.com" method="GET" enctype="text/plain" style="margin-top: 20px; display: inline-block;">
