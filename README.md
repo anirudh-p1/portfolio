@@ -18,16 +18,11 @@ This website will serve as a portfolio / digital resume where I showcase some of
     <a href="https://www.linkedin.com/in/anirudh-p-6570883a9" target="_blank" style="color: #58a6ff !important; text-decoration: underline; font-weight: 500; margin: 0 15px;">LinkedIn</a> • 
     <a href="mailto:anirudhprabhu6@gmail.com" style="color: #58a6ff !important; text-decoration: underline; font-weight: 500; margin: 0 15px;">Email</a>
   </p>
-  <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.85;"> 
-    <a href="mailto:anirudhprabhu6@gmail.com" style="color: #58a6ff !important; text-decoration: underline; font-weight: bold;">send me something interesting</a>
-  </p>
-</div>
-
   <!-- This hidden form forces the browser to send a strict, explicit subject field -->
   <form action="mailto:anirudhprabhu6@gmail.com" method="GET" enctype="text/plain" style="margin-top: 20px; display: inline-block;">
     <input type="hidden" name="subject" value="Something Interesting">
     <button type="submit" style="background: none; border: none; color: #58a6ff !important; text-decoration: underline; font-weight: bold; font-family: inherit; font-size: 0.95rem; cursor: pointer; padding: 0; margin: 0;">
-      send me something interesting
+      Send me something interesting
     </button>
   </form>
 </div>
