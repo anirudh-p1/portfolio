@@ -55,7 +55,12 @@
       relativePath: true,
       basePath: './',
       /* This turns on the sidebar functionality */
-      loadSidebar: true
+      loadSidebar: true,
+
+      /* FIX: Forces all folders to share the main root sidebar instead of wiping it blank */
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
