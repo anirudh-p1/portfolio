@@ -5,20 +5,26 @@
   <title>Anirudh P | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
-   <style>
+  <style>
+    /* ===== Docsify Custom Core Variables ===== */
+    :root {
+      --sidebar-width: 0px; /* Safely kills sidebar layout offset without breaking core engines */
+    }
+
     /* ===== 1. Dark Grey Background ===== */
     body, #app, .content, section.content {
       background-color: #1a1a1a !important;
     }
 
-    /* ===== No sidebar ===== */
-    .sidebar, .sidebar-toggle { display: none !important; }
-    .content { 
-      margin-left: 0 !important; 
-      position: static !important;
-      display: flex !important;
-      justify-content: center !important;
+    /* ===== Hide Sidebar Cleanly ===== */
+    .sidebar, .sidebar-toggle { 
+      display: none !important; 
+    }
+    .content {
+      left: 0 !important;
+      margin-left: 0 !important;
       width: 100% !important;
+      position: relative !important;
     }
 
     /* ===== 2. Custom Table Styles ===== */
@@ -31,7 +37,7 @@
     /* ===== 3. Link Colours ===== */
     a { color: #58a6ff !important; }
 
-    /* ===== 4. Regular Text & Absolute Grid Centering ===== */
+    /* ===== 4. Regular Text & Grid Centering ===== */
     .markdown-section,
     .markdown-section p,
     .markdown-section li {
@@ -41,10 +47,7 @@
       padding-top: 90px;   /* room for sticky name header */
       padding-bottom: 70px; /* room for fixed footer bar */
       max-width: 760px !important;
-      width: 100% !important;
-      margin: 0 auto !important; /* Centers the main column */
-      float: none !important;    /* Kills Docsify's internal floating layout engines */
-      display: block !important;
+      margin: 0 auto !important; /* Perfect centered alignment for all portfolio text */
     }
 
     /* ===== 5. Headings / Bold / Italic: White ===== */
@@ -110,7 +113,6 @@
       justify-content: center !important;
       gap: 18px !important;
       width: 100% !important;
-      max-width: 100% !important;
     }
     .pc-arrow {
       background: #161b22;
@@ -216,9 +218,14 @@
   </style>
 </head>
 <body>
+  <!-- Fixed Custom Top Header Panel -->
+  <div class="site-header">
+    <a href="#/">Anirudh Prabhu</a>
+  </div>
+
   <div id="app">Loading...</div>
 
-  <!-- Docsify Core -->
+  <!-- Docsify Core Framework Engine -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 
   <script>
@@ -239,11 +246,11 @@
       { title: "Mock Modular Attention", blurb: "Ramanujan Q-Series and Mock Theta Kernels for symmetry-constrained sequential learning.", image: "", path: "My Projects/Mock_Modular_Attention/README" },
       { title: "FreshSight-AI", blurb: "A CNN monitoring produce freshness in real time at retail.", image: "", path: "My Projects/FreshSight-AI/README" },
       { title: "Anti-MABL", blurb: "ML-powered resistance control for microgravity training machines.", image: "", path: "My Projects/Anti-MABL/README" },
-      { title: "Jamming-Detection", blurb: "WIP — RF jamming detection via complex-valued spectrogram autoencoding.", image: "", path: "My Projects/Jamming-Detection/README" },
-      { title: "HRV for Recovery/Fatigue Prediction", blurb: "WIP — predicting fatigue/recovery from HRV.", image: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
+      { title: "Jamming-Detection", blurb: "RF jamming detection via complex-valued spectrogram autoencoding.", image: "", path: "My Projects/Jamming-Detection/README" },
+      { title: "HRV for Recovery/Fatigue Prediction", blurb: "Predicting fatigue/recovery from HRV like Whoop.", image: "", path: "My Projects/HRV-for-recovery-fatigue-prediction/README" }
     ];
 
-    // Self-contained carousel builder
+    // Carousel script block
     (function () {
       var pcIndex = 0;
 
@@ -285,7 +292,6 @@
         }
       }
 
-      // Check for mount target periodically until Docsify renders the markdown page template
       var checkExist = setInterval(function() {
          if (document.getElementById('project-carousel')) {
             renderCarousel();
