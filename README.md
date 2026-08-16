@@ -4,7 +4,7 @@
 
 This website will serve as a portfolio / digital resume where I showcase some of my work.
 
-
+Explore:
 
 
 
